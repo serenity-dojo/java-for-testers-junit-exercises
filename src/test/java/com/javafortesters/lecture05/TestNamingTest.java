@@ -8,65 +8,46 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Lecture 5 Exercise — Naming Your Tests
- *
- * The tests below are all correct — they pass with the right assertions.
- * The problem is the names: they describe the method, not the behaviour.
- *
- * Part A — Rename the first four tests (right-click > Refactor > Rename in IntelliJ):
- *   Each name should describe what the code does, not which method is called.
- *   Example: 'test1' → 'addingTwoPositiveNumbersReturnsTheirSum'
- *
- * Part B — Add @DisplayName to the last three tests.
- *   @DisplayName appears in the IntelliJ test runner and makes reports more readable.
- *   Write it as a plain English sentence, e.g. "Adds two positive numbers"
- */
 class TestNamingTest {
 
-    // ── Part A: Rename these four tests ──────────────────────────────────────
+    // ── Part A: Renamed tests ─────────────────────────────────────────────────
 
     @Test
-    void test1() {
-        // TODO: Rename this method — it tests that multiplying any number by zero gives zero
+    void multiplyingAnyNumberByZeroReturnsZero() {
         Calculator calc = new Calculator();
         assertThat(calc.multiply(99, 0)).isEqualTo(0);
     }
 
     @Test
-    void calculatorTest() {
-        // TODO: Rename this method — it tests that subtracting a number from itself gives zero
+    void subtractingANumberFromItselfReturnsZero() {
         Calculator calc = new Calculator();
         assertThat(calc.subtract(7, 7)).isEqualTo(0);
     }
 
     @Test
-    void myTest() {
-        // TODO: Rename this method — it tests that a new cart is empty
+    void newShoppingCartIsEmpty() {
         ShoppingCart cart = new ShoppingCart();
         assertThat(cart.isEmpty()).isTrue();
     }
 
     @Test
-    void doSomething() {
-        // TODO: Rename this method — it tests that adding one item sets the count to 1
+    void addingOneItemSetsCountToOne() {
         ShoppingCart cart = new ShoppingCart();
         cart.addItem(new Item("Apple", 0.99));
         assertThat(cart.getItemCount()).isEqualTo(1);
     }
 
+    // ── Part B: @DisplayName added ───────────────────────────────────────────
 
-    // ── Part B: Add @DisplayName to these three tests ────────────────────────
-
-    // TODO: Add @DisplayName("Adding two negative numbers returns their sum") here
     @Test
+    @DisplayName("Adding two negative numbers returns their sum")
     void addsTwoNegativeNumbers() {
         Calculator calc = new Calculator();
         assertThat(calc.add(-3, -4)).isEqualTo(-7);
     }
 
-    // TODO: Add a @DisplayName annotation describing what this test verifies
     @Test
+    @DisplayName("Removing the only item leaves the cart empty")
     void removingOnlyItemLeavesCartEmpty() {
         ShoppingCart cart = new ShoppingCart();
         Item apple = new Item("Apple", 0.99);
@@ -75,8 +56,8 @@ class TestNamingTest {
         assertThat(cart.isEmpty()).isTrue();
     }
 
-    // TODO: Add a @DisplayName annotation describing what this test verifies
     @Test
+    @DisplayName("An empty cart has a total of zero")
     void cartTotalIsZeroWhenEmpty() {
         ShoppingCart cart = new ShoppingCart();
         assertThat(cart.getTotal()).isEqualTo(0.0);
